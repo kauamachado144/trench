@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trench Brothers</title>
+
+<!-- Aqui liga o arquivo de estilos (CSS) -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!--  Nossa tela de menu  -->
+  <div id="telaMenu">
+    <h1>TRENCH BROTHERS</h1>
+    <p>Defenda seu batalhão contra as ondas de inimigos que vão surgir no campo de batalha.</p>
+    <button id="botaoIniciar">Iniciar Partida</button>
+  </div>
+
+  <!-- Tela do jogo em si -->
+  <div id="telaJogo">
+    <div id="hud">
+      <span>Suprimentos: <b id="valorRecursos">0</b></span>
+      <span>Inimigos na área: <b id="valorInimigos">0</b></span>
+      <button id="botaoMenu">Voltar ao menu</button>
+    </div>
+    <canvas id="canvasJogo" width="900" height="480"></canvas>
+  </div>
+
+  <!-- E aqui puxa toda a lógica do (JavaScript) -->
+  <script src="script.js"></script>
+</body>
+</html>

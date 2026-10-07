@@ -1,0 +1,106 @@
+/* =================================================================
+   ESTILOS DO TRENCH BROTHERS
+   Aqui a gente só cuida da aparência (cores, tamanhos, espaçamentos).
+   Nada de lógica de jogo aqui, isso fica no script.js
+   ================================================================= */
+
+:root {
+  --cor-fundo: #33402f;
+  --cor-caixa: #46543f;
+  --cor-texto: #f4ecd8;
+  --cor-destaque: #c9a227;
+  --cor-botao: #6b5b3a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* ===== TELA DE MENU ===== */
+#telaMenu {
+  text-align: center;
+  background: var(--cor-caixa);
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 90vw;
+}
+
+#telaMenu h1 {
+  color: var(--cor-destaque);
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+#telaMenu p {
+  max-width: 400px;
+  margin: 0 auto 25px auto;
+  line-height: 1.4;
+}
+
+#botaoIniciar {
+  background: var(--cor-botao);
+  color: var(--cor-texto);
+  border: 2px solid var(--cor-destaque);
+  padding: 14px 28px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#botaoIniciar:hover {
+  background: var(--cor-destaque);
+  color: #222;
+}
+
+/* ===== TELA DO JOGO =====
+   Começa escondida (display: none), o script.js muda isso
+   quando o jogador clica em "Iniciar Partida" */
+#telaJogo {
+  display: none;
+  width: 100%;
+  max-width: 900px;
+}
+
+#hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--cor-caixa);
+  padding: 10px 16px;
+  border-radius: 8px 8px 0 0;
+  font-size: 16px;
+}
+
+#hud span b {
+  color: var(--cor-destaque);
+}
+
+#botaoMenu {
+  background: transparent;
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-texto);
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+#canvasJogo {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #6b5b3a;
+  border-radius: 0 0 8px 8px;
+}

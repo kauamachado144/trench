@@ -104,3 +104,54 @@ body {
   background: #6b5b3a;
   border-radius: 0 0 8px 8px;
 }
+
+/* Dica embaixo do campo de batalha */
+#dica {
+  margin: 8px 0 0 0;
+  font-size: 14px;
+  text-align: center;
+  opacity: 0.85;
+}
+
+/* ===== BARRA DE SELEÇÃO DE SOLDADOS ===== */
+#barraDeSoldados {
+  display: flex;
+  gap: 10px;
+  background: var(--cor-caixa);
+  padding: 8px 16px 10px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.carta {
+  background: var(--cor-botao);
+  color: var(--cor-texto);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: left;
+  cursor: pointer;
+}
+
+.carta small {
+  display: block;
+  font-weight: normal;
+  font-size: 12px;
+  color: var(--cor-destaque);
+}
+
+.carta:hover {
+  border-color: rgba(201, 162, 39, 0.6);
+}
+
+/* carta escolhida */
+.carta.selecionado {
+  border-color: var(--cor-destaque);
+  background: #7a6a45;
+}
+
+/* sem suprimentos suficientes pra esse soldado */
+.carta.semSuprimento {
+  opacity: 0.5;
+}

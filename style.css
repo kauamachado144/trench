@@ -70,7 +70,7 @@ body {
 #telaJogo {
   display: none;
   width: 100%;
-  max-width: 900px;
+  max-width: 1068px;   /* campo (900) + área do batalhão (168) */
 }
 
 #hud {
@@ -87,7 +87,7 @@ body {
   color: var(--cor-destaque);
 }
 
-#botaoMenu {
+#botaoMenu, #botaoReiniciar {
   background: transparent;
   color: var(--cor-texto);
   border: 1px solid var(--cor-texto);
@@ -114,12 +114,19 @@ body {
 }
 
 /* ===== BARRA DE SELEÇÃO DE SOLDADOS ===== */
-#barraDeSoldados {
+#barra {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 10px;
   background: var(--cor-caixa);
   padding: 8px 16px 10px 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+#barraDeSoldados {
+  display: flex;
+  gap: 10px;
 }
 
 .carta {
@@ -154,4 +161,199 @@ body {
 /* sem suprimentos suficientes pra esse soldado */
 .carta.semSuprimento {
   opacity: 0.5;
+}
+
+/* ===== PODER ESPECIAL (BOMBARDEIO) ===== */
+.carta.poder {
+  border-color: #8e2b22;
+}
+
+/* tem carga: brilha pra chamar atenção */
+.carta.poder.pronto {
+  border-color: #ffd54f;
+  background: #7a3b2e;
+  animation: pulsar 1s infinite;
+}
+
+/* sem carga */
+.carta.poder.semCarga {
+  opacity: 0.6;
+}
+
+@keyframes pulsar {
+  50% { box-shadow: 0 0 10px #ffd54f; }
+}
+
+/* =================================================================
+   VISUAL PIXEL ART
+   Cantos retos, fonte de pixel, bordas "grossas" e botões em relevo.
+   ================================================================= */
+
+/* Cantos retos em tudo */
+#telaMenu, #botaoIniciar, #hud, #botaoMenu, #botaoReiniciar, #canvasJogo, .carta {
+  border-radius: 0;
+}
+
+/* Fonte de pixel (se não carregar, usa a fonte reserva) */
+#telaMenu h1, #telaMenu p, #botaoIniciar, #hud, #botaoMenu, #botaoReiniciar, .carta, #dica {
+  font-family: "Press Start 2P", "Courier New", monospace;
+}
+
+/* A imagem do jogo não pode ficar borrada quando a tela encolhe */
+#canvasJogo {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Ícones (desenhados pelo script.js) */
+i.icone {
+  font-style: normal;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+i.icone canvas {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* ----- MENU ----- */
+#telaMenu {
+  border: 4px solid var(--cor-destaque);
+  box-shadow: 0 6px 0 #1a1812;
+}
+
+#telaMenu h1 {
+  font-size: 26px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-shadow: 3px 3px 0 #1a1812;
+}
+
+#telaMenu p {
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+/* ----- BOTÕES EM RELEVO ----- */
+#botaoIniciar {
+  font-size: 14px;
+  border: 3px solid var(--cor-destaque);
+  box-shadow: 0 4px 0 #1a1812;
+}
+
+#botaoIniciar:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #1a1812;
+}
+
+/* ----- HUD ----- */
+#hud {
+  font-size: 11px;
+  border-bottom: 3px solid #1a1812;
+  box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.1);
+}
+
+#hud span {
+  display: flex;
+  align-items: center;
+}
+
+#hud span b {
+  margin-left: 2px;
+}
+
+#botaoMenu, #botaoReiniciar {
+  font-size: 8px;
+  border: 2px solid var(--cor-texto);
+}
+
+/* ----- BARRA DE CARTAS ----- */
+#barra {
+  border-top: 0;
+  border-bottom: 3px solid #1a1812;
+  box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.08);
+}
+
+.carta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  line-height: 1.6;
+  border: 3px solid #1a1812;
+  box-shadow: inset 3px 3px 0 rgba(255, 255, 255, 0.15), inset -3px -3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.carta small {
+  display: block;
+  font-size: 8px;
+  line-height: 1.6;
+}
+
+.carta .textoDaCarta {
+  display: block;
+}
+
+.carta:hover {
+  border-color: var(--cor-destaque);
+}
+
+.carta.selecionado {
+  border-color: var(--cor-destaque);
+  box-shadow: inset 3px 3px 0 rgba(255, 255, 255, 0.25), inset -3px -3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.carta.poder.pronto {
+  border-color: #ffd54f;
+}
+
+/* ----- DICA ----- */
+#dica {
+  font-size: 9px;
+  line-height: 1.9;
+}
+
+/* Botões do canto do HUD (Reiniciar + Voltar ao menu) */
+#botoesDoHud {
+  display: flex;
+  gap: 8px;
+}
+
+
+/* Poderes especiais lado a lado */
+#poderes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+#barra {
+  flex-wrap: wrap;
+}
+
+
+/* ===== NOVO US4: BARRA DE MELHORIAS (gasta XP) ===== */
+#melhorias {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: var(--cor-caixa);
+  padding: 8px 16px 10px 16px;
+  border-bottom: 3px solid #1a1812;
+  box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.08);
+}
+
+#tituloDasMelhorias {
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: 9px;
+  color: var(--cor-destaque);
+}
+
+#barraDeMelhorias {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }

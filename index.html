@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trench Brothers</title>
 
+<!-- Fonte de pixel art (Google Fonts). Sem internet, o CSS usa uma fonte reserva -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
 <!-- Aqui liga o arquivo de estilos (CSS) -->
 <link rel="stylesheet" href="style.css">
 </head>
@@ -20,17 +25,43 @@
   <!-- Tela do jogo em si -->
   <div id="telaJogo">
     <div id="hud">
-      <span>Suprimentos: <b id="valorRecursos">0</b></span>
-      <span>Vida do batalhão: <b id="valorVida">0</b></span>
-      <span>Inimigos na área: <b id="valorInimigos">0</b></span>
-      <button id="botaoMenu">Voltar ao menu</button>
+      <span title="Suprimentos"><i class="icone" id="iconeSuprimentos"></i><b id="valorRecursos">0</b></span>
+      <span title="Vida do batalhão"><i class="icone" id="iconeVida"></i><b id="valorVida">0</b></span>
+      <span title="XP"><i class="icone" id="iconeXP"></i>XP <b id="valorXP">0</b></span>
+      <span title="Inimigos na área"><i class="icone" id="iconeInimigos"></i><b id="valorInimigos">0</b></span>
+      <div id="botoesDoHud">
+        <button id="botaoReiniciar">Reiniciar partida</button>
+        <button id="botaoMenu">Voltar ao menu</button>
+      </div>
     </div>
-    <div id="barraDeSoldados"></div>
+    <div id="barra">
+      <div id="barraDeSoldados"></div>
+      <div id="poderes">
+        <button id="botaoBombardeio" class="carta poder">
+          <i class="icone" id="iconeDoPoder"></i>
+          <span class="textoDaCarta">Bombardeio (B)
+            <small id="textoDoPoder"></small>
+          </span>
+        </button>
+        <button id="botaoMina" class="carta poder">
+          <i class="icone" id="iconeDaMina"></i>
+          <span class="textoDaCarta">Mina (M)
+            <small id="textoDaMina"></small>
+          </span>
+        </button>
+      </div>
+    </div>
+    <!-- NOVO US4: melhorias (o jogador gasta XP aqui, os botões são criados pelo script.js) -->
+    <div id="melhorias">
+      <span id="tituloDasMelhorias">Melhorias (XP)</span>
+      <div id="barraDeMelhorias"></div>
+    </div>
     <canvas id="canvasJogo" width="900" height="480"></canvas>
-    <p id="dica">Escolha um soldado na barra e clique numa casa do campo para posicioná-lo. ESC ou botão direito cancelam a seleção.</p>
+    <p id="dica">Escolha um soldado e clique numa casa do campo. Snipers vão nas torres do batalhão (à esquerda). Derrote inimigos para ganhar XP e suprimentos. Use Bombardeio (B) e Mina (M). Snipers ficam nas torres do batalhão. Gaste o XP nas Melhorias.</p>
   </div>
 
   <!-- E aqui puxa toda a lógica do (JavaScript) -->
+  <script src="sprites.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
